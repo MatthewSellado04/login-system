@@ -1,30 +1,31 @@
-<html lang="en">
+<?php
+$role = "admin"; 
+?>
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="register.css">
-    <title>Register</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Register</h1>
-<form action="registration.php" method="POST" class="container-form">
-    <div class="group">
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Username">
+<div class="top-bar">
+    <div class="left-menu">
+        <button>Dashboard</button>
+        <button>Categories</button>
+        <button>Products</button>
     </div>
-    <div class="group">
-        <label>Password:</label>
-        <input type="password" name="password" placeholder="Password">
+    <div class="right-menu">
+        <button>Logout</button>
     </div>
-    <div class="group">
-        <label>Confirm Password:</label>
-        <input type="password" name="confirm_password" placeholder="Confirm password">
-    </div>
-    <div class="group">
-        <label>BirthYear:</label>
-        <input type="text" name="birth_year" placeholder="BirthYear">
-    </div>
-    <button type="submit">Register</button>
-</form>
+</div>
+<div class="welcome">
+    <?php
+        if ($role == "admin") {
+            echo "<h2>Welcome Admin</h2>";
+        } else {
+            echo "<h2>Welcome Encoder</h2>";
+        }
+    ?>
+</div>
 </body>
 </html>

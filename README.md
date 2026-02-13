@@ -1,2 +1,0 @@
-# login-system
-school project

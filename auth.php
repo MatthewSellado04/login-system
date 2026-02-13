@@ -1,29 +1,21 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<?php 
+$input_username = $_POST['username'];
+$input_password = $_POST['password'];
 
-    $username = $_POST["username"] ?? '';
-    $password = $_POST["password"] ?? '';
-    $confirm_password = $_POST["confirm_password"] ?? '';
-    $birth_year = (int)($_POST["birth_year"] ?? 0);
+$usernameIsFound = false;
+$passwordIsFound = false;
 
-    $current_year = 2026;
-
-    if (!$username || !$password || !$confirm_password || !$birth_year) {
-        echo "Please provide all fields";
-        exit;
+foreach($students as $username => $pass) {
+    if ($username == $input_username) {
+        $usernameIsFound = true;
     }
-
-    if ($password !== $confirm_password) {
-        echo "Your password not match:<br>";
-        echo "password: $password<br>";
-        echo "repeat password: $confirm_password";
-        exit;
+    if ($pass === $input_password) {
+        $passwordIsFound = true;
     }
+};
 
-    $age = $current_year - $birth_year;
-
-    echo "Your username is: $username<br>";
-    echo "Your age: $age years old";
-}
-?>
+if ($usernameIsFound && $passwordIsFound) {
+    header("location: dashboard.php");
+} else {
+    header("location: logout.php");
 }
